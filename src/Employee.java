@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class Employee {
     private JPanel Main;
@@ -20,6 +21,21 @@ public class Employee {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    Connection con;
+    PreparedStatement pst;
+
+    public void connect(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/abccompany","root","");
+            System.out.println("Success");
+        }catch (ClassNotFoundException ex){
+
+        }catch (SQLException e){
+
+        }
     }
 
     public Employee() {
